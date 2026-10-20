@@ -1,0 +1,19 @@
+{
+  "name": "tab-amp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Firefox extension: per-tab volume control up to 1000%",
+  "scripts": {
+    "build": "tailwindcss -i ./src/ui.css -o ./extension/styles/ui.css --minify",
+    "watch": "tailwindcss -i ./src/ui.css -o ./extension/styles/ui.css --watch",
+    "start": "web-ext run --source-dir extension",
+    "lint": "web-ext lint --source-dir extension",
+    "package": "npm run build && web-ext build --source-dir extension --artifacts-dir dist --overwrite-dest"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "basecoat-css": "^1.0.2",
+    "tailwindcss": "^4.3.3",
+    "web-ext": "^10.8.0"
+  }
+}

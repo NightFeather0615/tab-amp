@@ -1,0 +1,12 @@
+/* Tailwind entry for the popup and options pages. Build with `npm run build`. */
+@import "tailwindcss" source(none);
+@import "basecoat-css";
+
+@source "../extension/**/*.{html,js}";
+
+@layer base {
+  /* Hide the number input spinners; the popup has its own −/+ buttons. */
+  input[type='number'] {
+    appearance: textfield;
+  }
+}

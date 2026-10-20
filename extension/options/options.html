@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="optionsTitle">Tab Amp settings</title>
+    <link rel="stylesheet" href="../styles/ui.css" />
+    <script src="../shared/theme.js"></script>
+    <script src="../shared/common.js" defer></script>
+    <script src="options.js" defer></script>
+  </head>
+  <body class="bg-muted/40 min-h-screen">
+    <main class="mx-auto flex max-w-2xl flex-col gap-6 px-4 py-10 sm:px-6">
+      <header class="flex items-center gap-3">
+        <img src="../icons/icon.svg" alt="" class="size-10" />
+        <div>
+          <h1 class="text-xl leading-tight font-semibold tracking-tight">Tab Amp</h1>
+          <p class="text-muted-foreground text-sm" data-i18n="optionsSubtitle">Per-tab volume control</p>
+        </div>
+      </header>
+
+      <section class="card">
+        <header>
+          <h2 data-i18n="optionsMaxTitle">Maximum volume</h2>
+          <p data-i18n="optionsMaxDesc">The top of the volume slider.</p>
+        </header>
+        <section class="flex flex-col gap-5">
+          <div id="max-presets" class="button-group w-full" role="group" data-i18n-aria-label="optionsMaxTitle"></div>
+          <form id="max-form" class="flex flex-wrap items-end gap-3" novalidate>
+            <div class="field w-40 gap-2">
+              <label for="max-custom" data-i18n="optionsMaxCustom">Custom</label>
+              <div class="relative">
+                <input id="max-custom" type="number" class="input pe-8 tabular-nums" step="10" required />
+                <span class="text-muted-foreground pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm">%</span>
+              </div>
+            </div>
+            <button type="submit" class="btn" data-variant="secondary" data-i18n="optionsMaxApply">Apply</button>
+            <p id="max-status" class="text-muted-foreground data-invalid:text-destructive flex h-9 items-center gap-1.5 text-sm" role="status"></p>
+          </form>
+        </section>
+      </section>
+
+      <section class="card">
+        <header>
+          <h2 data-i18n="optionsRulesTitle">Site rules</h2>
+          <p data-i18n="optionsRulesDesc">Pages on these sites open at the remembered volume.</p>
+        </header>
+        <section>
+          <div id="rules-empty" class="empty p-8" hidden>
+            <header>
+              <figure>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></svg>
+              </figure>
+              <h3 class="text-base!" data-i18n="optionsRulesEmptyTitle">No site rules</h3>
+              <p data-i18n="optionsRulesEmptyDesc">Turn on “Remember for this site” in the popup to add one.</p>
+            </header>
+          </div>
+          <div id="rules-table" class="table-container" hidden>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th data-i18n="optionsColSite">Site</th>
+                  <th class="w-32" data-i18n="optionsColVolume">Volume</th>
+                  <th class="w-10"><span class="sr-only" data-i18n="optionsColActions">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody id="rules"></tbody>
+            </table>
+          </div>
+        </section>
+        <footer id="rules-footer" class="justify-end border-t" hidden>
+          <button id="remove-all" type="button" class="btn" data-variant="destructive" data-size="sm" data-i18n="optionsRemoveAll">Remove all</button>
+        </footer>
+      </section>
+
+      <section class="card">
+        <header>
+          <h2 data-i18n="optionsAboutTitle">How it works</h2>
+        </header>
+        <section>
+          <ul class="text-muted-foreground flex list-disc flex-col gap-2 ps-5 leading-relaxed">
+            <li data-i18n="optionsAbout1"></li>
+            <li data-i18n="optionsAbout2"></li>
+            <li data-i18n="optionsAbout3"></li>
+          </ul>
+        </section>
+      </section>
+    </main>
+
+    <template id="rule-row">
+      <tr>
+        <td class="max-w-0 truncate font-medium" data-site></td>
+        <td>
+          <div class="relative w-28">
+            <input type="number" class="input h-8 pe-7 text-sm tabular-nums" min="0" step="10" data-volume data-i18n-aria-label="optionsColVolume" />
+            <span class="text-muted-foreground pointer-events-none absolute inset-y-0 end-2.5 flex items-center text-xs">%</span>
+          </div>
+        </td>
+        <td class="text-end">
+          <button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-remove data-i18n-title="optionsRemove" data-i18n-aria-label="optionsRemove">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 11v6" /><path d="M14 11v6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
+          </button>
+        </td>
+      </tr>
+    </template>
+  </body>
+</html>

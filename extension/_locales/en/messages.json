@@ -1,0 +1,164 @@
+{
+  "extName": {
+    "message": "Tab Amp"
+  },
+  "extDescription": {
+    "message": "Set the volume of each tab from 0% up to 1000%, and remember it per site."
+  },
+  "settings": {
+    "message": "Settings"
+  },
+  "statusPlaying": {
+    "message": "Playing"
+  },
+  "hintMuted": {
+    "message": "Muted"
+  },
+  "hintReduced": {
+    "message": "Quieter than original"
+  },
+  "hintOriginal": {
+    "message": "Original volume"
+  },
+  "hintBoosted": {
+    "message": "Boosted $1×"
+  },
+  "volumeLabel": {
+    "message": "Tab volume"
+  },
+  "decrease": {
+    "message": "Decrease"
+  },
+  "increase": {
+    "message": "Increase"
+  },
+  "mute": {
+    "message": "Mute"
+  },
+  "unmute": {
+    "message": "Unmute"
+  },
+  "noMedia": {
+    "message": "No audio or video found on this page yet."
+  },
+  "siteRuleTitle": {
+    "message": "Remember for this site"
+  },
+  "siteRuleOff": {
+    "message": "Open future pages on $1 at this volume."
+  },
+  "siteRuleOn": {
+    "message": "Pages on $1 will open at $2%."
+  },
+  "siteRuleUnavailable": {
+    "message": "Only available on websites."
+  },
+  "maxVolume": {
+    "message": "Max"
+  },
+  "reset": {
+    "message": "Reset"
+  },
+  "unavailableTitle": {
+    "message": "Can't adjust this page"
+  },
+  "unavailableDesc": {
+    "message": "Firefox doesn't let add-ons run on built-in pages or addons.mozilla.org."
+  },
+  "deniedTitle": {
+    "message": "Site access needed"
+  },
+  "deniedDesc": {
+    "message": "Tab Amp needs access to websites to control the audio on them."
+  },
+  "deniedGrant": {
+    "message": "Allow access"
+  },
+  "warnTabMutedTitle": {
+    "message": "This tab is muted"
+  },
+  "warnTabMutedDesc": {
+    "message": "Firefox has muted the tab, so you won't hear any change."
+  },
+  "warnTabMutedAction": {
+    "message": "Unmute tab"
+  },
+  "warnGestureTitle": {
+    "message": "Click the page once"
+  },
+  "warnGestureDesc": {
+    "message": "Firefox only allows boosting after you interact with the page."
+  },
+  "warnLimitedTitle": {
+    "message": "Some media can't go above 100%"
+  },
+  "warnLimitedDesc": {
+    "message": "Their audio comes from another site without permission to process it (CORS), so they can only be turned down."
+  },
+  "optionsTitle": {
+    "message": "Tab Amp settings"
+  },
+  "optionsSubtitle": {
+    "message": "Per-tab volume control"
+  },
+  "optionsMaxTitle": {
+    "message": "Maximum volume"
+  },
+  "optionsMaxDesc": {
+    "message": "The top of the volume slider. Very high values can distort audio."
+  },
+  "optionsMaxCustom": {
+    "message": "Custom"
+  },
+  "optionsMaxApply": {
+    "message": "Apply"
+  },
+  "optionsMaxRange": {
+    "message": "Between $1% and $2%."
+  },
+  "optionsSaved": {
+    "message": "Saved"
+  },
+  "optionsRulesTitle": {
+    "message": "Site rules"
+  },
+  "optionsRulesDesc": {
+    "message": "Pages on these sites open at the remembered volume. Changes apply the next time a page loads."
+  },
+  "optionsColSite": {
+    "message": "Site"
+  },
+  "optionsColVolume": {
+    "message": "Volume"
+  },
+  "optionsColActions": {
+    "message": "Actions"
+  },
+  "optionsRemove": {
+    "message": "Remove"
+  },
+  "optionsRemoveAll": {
+    "message": "Remove all"
+  },
+  "optionsRemoveAllConfirm": {
+    "message": "Remove all $1 site rules?"
+  },
+  "optionsRulesEmptyTitle": {
+    "message": "No site rules"
+  },
+  "optionsRulesEmptyDesc": {
+    "message": "Turn on “Remember for this site” in the popup to add one."
+  },
+  "optionsAboutTitle": {
+    "message": "How it works"
+  },
+  "optionsAbout1": {
+    "message": "Each tab has its own volume. It stays while you browse the same site in that tab and resets when the tab goes to another site."
+  },
+  "optionsAbout2": {
+    "message": "Site rules set the starting volume for pages on that site. A volume set in a tab takes priority."
+  },
+  "optionsAbout3": {
+    "message": "Going above 100% uses the Web Audio API. Media served from another site without CORS can only be turned down."
+  }
+}

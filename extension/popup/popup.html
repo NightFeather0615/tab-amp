@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tab Amp</title>
+    <link rel="stylesheet" href="../styles/ui.css" />
+    <script src="../shared/theme.js"></script>
+    <script src="../shared/common.js" defer></script>
+    <script src="popup.js" defer></script>
+  </head>
+  <body class="w-[22rem] text-sm">
+    <main class="flex flex-col gap-3 p-3">
+      <header class="flex items-center gap-3 px-1">
+        <img src="../icons/icon.svg" alt="" class="size-8 shrink-0" />
+        <div class="min-w-0 flex-1">
+          <h1 class="leading-tight font-semibold">Tab Amp</h1>
+          <p id="site" class="text-muted-foreground truncate text-xs leading-tight">&nbsp;</p>
+        </div>
+        <span id="playing" class="badge" data-variant="secondary" hidden>
+          <span class="size-1.5 animate-pulse rounded-full bg-emerald-500"></span>
+          <span data-i18n="statusPlaying">Playing</span>
+        </span>
+        <button id="open-options" type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-i18n-title="settings" data-i18n-aria-label="settings">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /><circle cx="12" cy="12" r="3" /></svg>
+        </button>
+      </header>
+
+      <!-- Shown instead of the controls when the extension can't run on the page. -->
+      <section id="unavailable" class="empty rounded-xl border p-8" hidden>
+        <header>
+          <figure>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /><line x1="22" x2="16" y1="9" y2="15" /><line x1="16" x2="22" y1="9" y2="15" /></svg>
+          </figure>
+          <h2 id="unavailable-title" class="text-base!"></h2>
+          <p id="unavailable-desc"></p>
+        </header>
+        <footer id="unavailable-actions" hidden>
+          <button id="grant" type="button" class="btn" data-size="sm" data-i18n="deniedGrant">Allow access</button>
+        </footer>
+      </section>
+
+      <div id="controls" class="flex flex-col gap-3" hidden>
+        <section class="card gap-4 py-4">
+          <section class="flex flex-col gap-4 px-4">
+            <div class="flex items-end justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-4xl leading-none font-semibold tracking-tight tabular-nums">
+                  <span id="volume-value">100</span><span class="text-muted-foreground ms-0.5 text-2xl font-medium">%</span>
+                </p>
+                <p id="volume-hint" class="text-muted-foreground mt-1.5 text-xs data-boosted:text-orange-600 dark:data-boosted:text-orange-400"></p>
+              </div>
+              <div class="button-group" role="group" data-i18n-aria-label="volumeLabel">
+                <button id="decrease" type="button" class="btn" data-variant="outline" data-size="icon-sm" data-i18n-title="decrease" data-i18n-aria-label="decrease">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /></svg>
+                </button>
+                <input id="volume-input" type="number" class="input h-8 w-16 px-1 text-center text-sm tabular-nums shadow-none" min="0" step="1" inputmode="numeric" data-i18n-aria-label="volumeLabel" />
+                <button id="increase" type="button" class="btn" data-variant="outline" data-size="icon-sm" data-i18n-title="increase" data-i18n-aria-label="increase">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-2">
+              <button id="mute" type="button" class="btn -ms-1.5 -mt-1.5" data-variant="ghost" data-size="icon-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
+                  <g data-icon="muted"><line x1="22" x2="16" y1="9" y2="15" /><line x1="16" x2="22" y1="9" y2="15" /></g>
+                  <path data-icon="low" d="M16 9a5 5 0 0 1 0 6" />
+                  <path data-icon="high" d="M19.364 18.364a9 9 0 0 0 0-12.728" />
+                </svg>
+              </button>
+              <div class="min-w-0 flex-1">
+                <input id="slider" type="range" class="input w-full" min="0" step="1" value="100" data-i18n-aria-label="volumeLabel" />
+                <div class="text-muted-foreground relative mt-1.5 h-4 text-[0.6875rem] leading-4 tabular-nums" aria-hidden="true">
+                  <span id="mark-min" class="absolute start-0">0%</span>
+                  <span id="mark-default" class="absolute -translate-x-1/2">
+                    <span class="bg-border absolute -top-1.5 left-1/2 h-1.5 w-px"></span>100%
+                  </span>
+                  <span id="mark-max" class="absolute end-0"></span>
+                </div>
+              </div>
+            </div>
+
+            <div id="presets" class="button-group w-full" role="group"></div>
+            <p id="no-media" class="text-muted-foreground -mt-1 text-xs" data-i18n="noMedia" hidden></p>
+          </section>
+        </section>
+
+        <label for="site-rule">
+          <div class="field" data-orientation="horizontal">
+            <section>
+              <h3 data-i18n="siteRuleTitle">Remember for this site</h3>
+              <p id="site-rule-desc" class="text-xs!"></p>
+            </section>
+            <input id="site-rule" type="checkbox" role="switch" class="input" />
+          </div>
+        </label>
+
+        <div id="alerts" class="flex flex-col gap-2 empty:hidden"></div>
+
+        <footer class="flex items-center justify-between gap-2 px-1">
+          <div class="flex items-center gap-2">
+            <label for="max-volume" class="label text-muted-foreground text-xs font-normal" data-i18n="maxVolume">Max</label>
+            <select id="max-volume" class="select" data-size="sm"></select>
+          </div>
+          <button id="reset" type="button" class="btn" data-variant="outline" data-size="sm">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /></svg>
+            <span data-i18n="reset">Reset</span>
+          </button>
+        </footer>
+      </div>
+    </main>
+
+    <template id="alert-template">
+      <div class="alert py-2.5 text-xs">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><line x1="12" x2="12" y1="8" y2="12" /><line x1="12" x2="12.01" y1="16" y2="16" /></svg>
+        <h2 class="text-sm"></h2>
+        <section class="text-xs!">
+          <p></p>
+        </section>
+      </div>
+    </template>
+  </body>
+</html>

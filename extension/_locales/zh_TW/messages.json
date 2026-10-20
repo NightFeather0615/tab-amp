@@ -1,0 +1,164 @@
+{
+  "extName": {
+    "message": "Tab Amp 分頁音量"
+  },
+  "extDescription": {
+    "message": "獨立調整每個分頁的音量（0% 到 1000%），並可記住各網域的設定。"
+  },
+  "settings": {
+    "message": "設定"
+  },
+  "statusPlaying": {
+    "message": "播放中"
+  },
+  "hintMuted": {
+    "message": "已靜音"
+  },
+  "hintReduced": {
+    "message": "低於原始音量"
+  },
+  "hintOriginal": {
+    "message": "原始音量"
+  },
+  "hintBoosted": {
+    "message": "已放大 $1 倍"
+  },
+  "volumeLabel": {
+    "message": "分頁音量"
+  },
+  "decrease": {
+    "message": "降低"
+  },
+  "increase": {
+    "message": "提高"
+  },
+  "mute": {
+    "message": "靜音"
+  },
+  "unmute": {
+    "message": "取消靜音"
+  },
+  "noMedia": {
+    "message": "目前在此頁面上找不到音訊或影片。"
+  },
+  "siteRuleTitle": {
+    "message": "套用至此網域"
+  },
+  "siteRuleOff": {
+    "message": "之後開啟 $1 的網頁時，自動套用目前音量。"
+  },
+  "siteRuleOn": {
+    "message": "$1 的網頁將以 $2% 的音量開啟。"
+  },
+  "siteRuleUnavailable": {
+    "message": "僅適用於一般網站。"
+  },
+  "maxVolume": {
+    "message": "上限"
+  },
+  "reset": {
+    "message": "重設"
+  },
+  "unavailableTitle": {
+    "message": "無法調整此頁面"
+  },
+  "unavailableDesc": {
+    "message": "Firefox 不允許附加元件在內建頁面或 addons.mozilla.org 上執行。"
+  },
+  "deniedTitle": {
+    "message": "需要網站存取權限"
+  },
+  "deniedDesc": {
+    "message": "Tab Amp 需要網站存取權限，才能控制頁面上的音訊。"
+  },
+  "deniedGrant": {
+    "message": "允許存取"
+  },
+  "warnTabMutedTitle": {
+    "message": "此分頁已被靜音"
+  },
+  "warnTabMutedDesc": {
+    "message": "分頁已被 Firefox 靜音，調整音量不會有聲音。"
+  },
+  "warnTabMutedAction": {
+    "message": "取消分頁靜音"
+  },
+  "warnGestureTitle": {
+    "message": "請先點擊頁面一次"
+  },
+  "warnGestureDesc": {
+    "message": "Firefox 需要您先與頁面互動，才能放大音量。"
+  },
+  "warnLimitedTitle": {
+    "message": "部分媒體無法超過 100%"
+  },
+  "warnLimitedDesc": {
+    "message": "這些媒體的音訊來自其他網站且未授權處理（CORS），只能調低音量。"
+  },
+  "optionsTitle": {
+    "message": "Tab Amp 設定"
+  },
+  "optionsSubtitle": {
+    "message": "分頁音量控制"
+  },
+  "optionsMaxTitle": {
+    "message": "最大音量"
+  },
+  "optionsMaxDesc": {
+    "message": "音量滑桿的上限。數值過高可能造成破音。"
+  },
+  "optionsMaxCustom": {
+    "message": "自訂"
+  },
+  "optionsMaxApply": {
+    "message": "套用"
+  },
+  "optionsMaxRange": {
+    "message": "介於 $1% 到 $2% 之間。"
+  },
+  "optionsSaved": {
+    "message": "已儲存"
+  },
+  "optionsRulesTitle": {
+    "message": "網域規則"
+  },
+  "optionsRulesDesc": {
+    "message": "這些網域的網頁開啟時會自動套用記住的音量，變更會在下次載入頁面時生效。"
+  },
+  "optionsColSite": {
+    "message": "網域"
+  },
+  "optionsColVolume": {
+    "message": "音量"
+  },
+  "optionsColActions": {
+    "message": "動作"
+  },
+  "optionsRemove": {
+    "message": "移除"
+  },
+  "optionsRemoveAll": {
+    "message": "全部移除"
+  },
+  "optionsRemoveAllConfirm": {
+    "message": "確定要移除全部 $1 條網域規則嗎？"
+  },
+  "optionsRulesEmptyTitle": {
+    "message": "尚無網域規則"
+  },
+  "optionsRulesEmptyDesc": {
+    "message": "在彈出視窗中開啟「套用至此網域」即可新增。"
+  },
+  "optionsAboutTitle": {
+    "message": "運作方式"
+  },
+  "optionsAbout1": {
+    "message": "每個分頁的音量各自獨立；在同一分頁瀏覽相同網域時會保留，切換到其他網域時則重設。"
+  },
+  "optionsAbout2": {
+    "message": "網域規則決定該網域網頁開啟時的音量；分頁中手動調整的音量優先。"
+  },
+  "optionsAbout3": {
+    "message": "超過 100% 的放大透過 Web Audio API 實現；來自其他網站且未開放 CORS 的媒體只能調低音量。"
+  }
+}
